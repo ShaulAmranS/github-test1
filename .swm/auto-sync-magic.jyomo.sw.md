@@ -1,24 +1,16 @@
 ---
-id: jyomo
-title: "🦄 Auto-sync magic "
-file_version: 1.1.1
-app_version: 1.1.0
+title: "\U0001F984 Auto-sync magic "
 ---
-
 ## What happens when your code changes?
 
 When your code changes, Swimm determines if it’s a minor or major change, and your doc is updated.
 
-<br/>
+| Change type  | Examples                                                                                      | Detection | Manual Action                    | Automated |
+| ------------ | --------------------------------------------------------------------------------------------- | --------- | -------------------------------- | --------- |
+| Minor change | · A **line change**<br><br>· Renaming a **variable**<br><br>· A change of **key-value** pairs | ✅        | Accept Swimm’s<br><br>suggestion | ✅        |
+| Major change | · The **function** was deleted<br><br>· The line **completely changed**                       | ✅        | Accept Swimm’s<br><br>suggestion | ❌        |
 
-|Change type |Examples                                                                                       |Detection|Manual Action                    |Automated|
-|------------|-----------------------------------------------------------------------------------------------|---------|---------------------------------|---------|
-|Minor change|· A **line change**<br/><br>· Renaming a **variable**<br/><br>· A change of **key-value** pairs|✅        |Accept Swimm’s<br/><br>suggestion|✅        |
-|Major change|· The **function** was deleted<br/><br>· The line **completely changed**                       |✅        |Accept Swimm’s<br/><br>suggestion|❌        |
-
-<br/>
-
-<br/>
+&nbsp;
 
 ### Minor Change
 
@@ -26,10 +18,9 @@ In the example below Swimm detected a minor change in the code.
 
 The developer changed 2 things:
 
-*   An "<li>" element to a "<div>".
-    
-*   Added a css class "view-template".
-    
+- An "<li>" element to a "<div>".
+
+- Added a css class "view-template".
 
 Swimm detects code changes and shows the diff.
 
@@ -37,25 +28,28 @@ In order to fix the snippets below, go to edit mode.
 
 **Click "Accept" to "fix" it**.
 
-<br/>
+<SwmSnippet path="/examples/vanilla-es6/src/template.js" line="21">
 
-This code creates a dynamic HTML list `item`<swm-token data-swm-token=":examples/vanilla-es6/src/template.js:21:10:10:`&lt;li data-id=&quot;${item.id}&quot;${item.completed ? &#39; class=&quot;completed&quot;&#39; : &#39;&#39;}&gt;`"/> element using JavaScript template literals and data from an item object.<br/>
-we're using the `escapeForHTML`<swm-token data-swm-token=":examples/vanilla-es6/src/template.js:24:5:5:`		&lt;label&gt;${escapeForHTML(item.title)}&lt;/label&gt;`"/> helper function to replaces '&' and '<' with their HTML entity equivalents to prevent XSS.
-<!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
-### 📄 examples/vanilla-es6/src/template.js
+---
+
+This code creates a dynamic HTML list <SwmToken path="/examples/vanilla-es6/src/template.js" pos="21:10:10" line-data="&lt;li data-id=&quot;${item.id}&quot;${item.completed ? &#39; class=&quot;completed&quot;&#39; : &#39;&#39;}&gt;">`item`</SwmToken> element using JavaScript template literals and data from an item object.\
+&nbsp;we're using the <SwmToken path="/examples/vanilla-es6/src/template.js" pos="24:5:5" line-data="		&lt;label&gt;${escapeForHTML(item.title)}&lt;/label&gt;">`escapeForHTML`</SwmToken> helper function to replaces '&' and '<' with their HTML entity equivalents to prevent XSS.
+
 ```javascript
-21     <li data-id="${item.id}"${item.completed ? ' class="completed"' : ''}>
-22     	<div class="view">
-23     		<input class="toggle" type="checkbox" ${item.completed ? 'checked' : ''}>
-24     		<label>${escapeForHTML(item.title)}</label>
-25     		<button class="destroy"></button>
-26     	</div>
-27     </li>`, '');
+<li data-id="${item.id}"${item.completed ? ' class="completed"' : ''}>
+	<div class="view">
+		<input class="toggle" type="checkbox" ${item.completed ? 'checked' : ''}>
+		<label>${escapeForHTML(item.title)}</label>
+		<button class="destroy"></button>
+	</div>
+</li>`, '');
 ```
 
-<br/>
+---
 
-<br/>
+</SwmSnippet>
+
+&nbsp;
 
 ### Major Change
 
@@ -65,30 +59,33 @@ At this point, the person familiar with change should get a decision. Either to 
 
 **Fix this snippet 👇 - use the "Reselect" button below...**
 
-<br/>
+<SwmSnippet path="/examples/vanilla-es6/src/store.js" line="53">
 
-This function `find`<swm-token data-swm-token=":examples/vanilla-es6/src/store.js:53:1:1:`	find(query, callback) {`"/> and `filter`<swm-token data-swm-token=":examples/vanilla-es6/src/store.js:57:5:5:`		callback(todos.filter(todo =&gt; {`"/> objects in the `todos`<swm-token data-swm-token=":examples/vanilla-es6/src/store.js:54:3:3:`		const todos = this.getLocalStorage();`"/> array based on matching key-value pairs in a query object and passes the result to a callback function.
-<!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
-### 📄 examples/vanilla-es6/src/store.js
+---
+
+This function <SwmToken path="/examples/vanilla-es6/src/store.js" pos="53:1:1" line-data="	find(query, callback) {">`find`</SwmToken> and <SwmToken path="/examples/vanilla-es6/src/store.js" pos="57:5:5" line-data="		callback(todos.filter(todo =&gt; {">`filter`</SwmToken> objects in the <SwmToken path="/examples/vanilla-es6/src/store.js" pos="54:3:3" line-data="		const todos = this.getLocalStorage();">`todos`</SwmToken> array based on matching key-value pairs in a query object and passes the result to a callback function.
+
 ```javascript
-53     	find(query, callback) {
-54     		const todos = this.getLocalStorage();
-55     		let k;
-56     
-57     		callback(todos.filter(todo => {
-58     			for (k in query) {
-59     				if (query[k] !== todo[k]) {
-60     					return false;
-61     				}
-62     			}
-63     			return true;
-64     		}));
-65     	}
+	find(query, callback) {
+		const todos = this.getLocalStorage();
+		let k;
+
+		callback(todos.filter(todo => {
+			for (k in query) {
+				if (query[k] !== todo[k]) {
+					return false;
+				}
+			}
+			return true;
+		}));
+	}
 ```
 
-<br/>
+---
 
-<br/>
+</SwmSnippet>
+
+&nbsp;
 
 ## Voila!
 
@@ -96,6 +93,8 @@ Your code-coupled elements are now updated in your doc.
 
 **The next step** would be to commit your changes to your repository, open a pull request and merge your branches for your team to have the latest documentation.
 
-<br/>
+&nbsp;
 
-This file was generated by Swimm. [Click here to view it in the app](https://swimm-web-app.web.app/repos/Z2l0aHViJTNBJTNBdG9kbyUzQSUzQVlvc3NpU2FhZGk=/docs/jyomo).
+&nbsp;
+
+<SwmMeta version="3.0.0" repo-id="Z2l0aHViJTNBJTNBZ2l0aHViLXRlc3QxJTNBJTNBU2hhdWxBbXJhblM=" repo-name="github-test1"><sup>Powered by [Swimm](https://app.swimm.io/)</sup></SwmMeta>
